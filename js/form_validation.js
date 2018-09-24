@@ -5,7 +5,9 @@ $(document).ready(function() {
     $("#loginform #password").focusout(function() {
         console.log(pwd.val());
         if (pwd.val() ==null || pwd.val()=="") {
-            $("#pwdalert").show();
+            if ( $('#pwdalert').css('visibility') == 'hidden' ) {
+                $('#pwdalert').css('visibility','visible');
+            }
         }
     });
 
