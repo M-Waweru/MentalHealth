@@ -73,11 +73,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+require 'custom_connection.php';
+
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	'username' => $username,
+	'password' => $password,
 	'database' => 'mentalhealth',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
