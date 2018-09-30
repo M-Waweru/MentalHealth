@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2018 at 12:15 AM
+-- Generation Time: Sep 30, 2018 at 03:30 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -46,6 +46,17 @@ CREATE TABLE `doctors` (
   `Specialization` varchar(30) NOT NULL,
   `Clinic Name` varchar(20) NOT NULL,
   `Clinic Location` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event registration`
+--
+
+CREATE TABLE `event registration` (
+  `Event No` int(50) NOT NULL,
+  `User No` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -117,12 +128,20 @@ CREATE TABLE `professional_help` (
 CREATE TABLE `users` (
   `User No` int(10) NOT NULL,
   `Username` varchar(30) NOT NULL,
+  `User type` varchar(20) NOT NULL,
   `Password` varchar(100) NOT NULL,
   `Full Name` varchar(50) DEFAULT NULL,
   `Email address` varchar(30) NOT NULL,
   `Description` varchar(200) DEFAULT NULL,
   `Phone Number` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`User No`, `Username`, `User type`, `Password`, `Full Name`, `Email address`, `Description`, `Phone Number`) VALUES
+(1, 'Mathenge', 'Patients', 'math1234', NULL, '', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -221,7 +240,7 @@ ALTER TABLE `professional_help`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `User No` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `User No` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

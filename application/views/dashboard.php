@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel = "stylesheet" type = "text/css" 
-  href = "../MentalHealth/css/dash.css"> 
+  href = "/MentalHealth/css/dash.css"> 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -23,7 +23,7 @@
         <li class="active"><a href="dashboard.php">Home</a></li>
         <li><a href="signup.html">Sign Up</a></li>
         <li><a href="#">About</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="<?php echo site_url('/login/displayPage') ?>">Login</a></li>
 
       </ul>
     </div>
