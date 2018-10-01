@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2018 at 03:30 PM
+-- Generation Time: Oct 01, 2018 at 07:33 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admins` (
-  `Admin No` int(50) NOT NULL,
-  `User No` int(50) NOT NULL,
+  `Admin_no` int(50) NOT NULL,
+  `User_no` int(50) NOT NULL,
   `Position` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -41,11 +41,11 @@ CREATE TABLE `admins` (
 --
 
 CREATE TABLE `doctors` (
-  `Doctor No` int(50) NOT NULL,
-  `User No` int(50) NOT NULL,
+  `Doctor_no` int(50) NOT NULL,
+  `User_no` int(50) NOT NULL,
   `Specialization` varchar(30) NOT NULL,
-  `Clinic Name` varchar(20) NOT NULL,
-  `Clinic Location` varchar(40) NOT NULL
+  `Clinic_name` varchar(20) NOT NULL,
+  `Clinic_location` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -55,8 +55,8 @@ CREATE TABLE `doctors` (
 --
 
 CREATE TABLE `event registration` (
-  `Event No` int(50) NOT NULL,
-  `User No` int(50) NOT NULL
+  `Event_no` int(50) NOT NULL,
+  `User_no` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -66,13 +66,13 @@ CREATE TABLE `event registration` (
 --
 
 CREATE TABLE `events` (
-  `Event No` int(50) NOT NULL,
-  `Event Name` int(30) NOT NULL,
+  `Event_no` int(50) NOT NULL,
+  `Event_name` int(30) NOT NULL,
   `Description` int(200) NOT NULL,
   `Type` int(30) NOT NULL,
   `Datetime` int(40) NOT NULL,
   `Hosts` varchar(50) NOT NULL,
-  `Admin No` int(50) NOT NULL
+  `Admin_no` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -82,12 +82,12 @@ CREATE TABLE `events` (
 --
 
 CREATE TABLE `media` (
-  `Media No` int(50) NOT NULL,
-  `Media Name` varchar(30) NOT NULL,
+  `Media_no` int(50) NOT NULL,
+  `Media_name` varchar(30) NOT NULL,
   `Type` varchar(20) NOT NULL,
   `Description` varchar(200) NOT NULL,
   `Link` varchar(100) NOT NULL,
-  `Admin No` int(50) NOT NULL
+  `Admin_no` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -97,12 +97,19 @@ CREATE TABLE `media` (
 --
 
 CREATE TABLE `patients` (
-  `Patient No` int(50) NOT NULL,
-  `User No` int(50) NOT NULL,
+  `Patient_no` int(50) NOT NULL,
+  `User_no` int(50) NOT NULL,
   `Country` varchar(20) DEFAULT NULL,
   `City` varchar(30) DEFAULT NULL,
   `Conditions` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `patients`
+--
+
+INSERT INTO `patients` (`Patient_no`, `User_no`, `Country`, `City`, `Conditions`) VALUES
+(1, 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -111,12 +118,12 @@ CREATE TABLE `patients` (
 --
 
 CREATE TABLE `professional_help` (
-  `Application No` int(50) NOT NULL,
-  `Doctor No` int(50) DEFAULT NULL,
-  `Patient No` int(50) NOT NULL,
-  `Date of Approval` varchar(30) DEFAULT NULL,
-  `Condition Description` varchar(200) NOT NULL,
-  `Patient Progress` varchar(100) DEFAULT NULL
+  `Application_no` int(50) NOT NULL,
+  `Doctor_no` int(50) DEFAULT NULL,
+  `Patient_no` int(50) NOT NULL,
+  `Date_of_approval` varchar(30) DEFAULT NULL,
+  `Condition_description` varchar(200) NOT NULL,
+  `Patient_progress` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -126,22 +133,24 @@ CREATE TABLE `professional_help` (
 --
 
 CREATE TABLE `users` (
-  `User No` int(10) NOT NULL,
+  `User_no` int(10) NOT NULL,
   `Username` varchar(30) NOT NULL,
-  `User type` varchar(20) NOT NULL,
+  `User_type` varchar(20) NOT NULL,
   `Password` varchar(100) NOT NULL,
-  `Full Name` varchar(50) DEFAULT NULL,
-  `Email address` varchar(30) NOT NULL,
+  `Full_name` varchar(50) DEFAULT NULL,
+  `Email_address` varchar(30) NOT NULL,
   `Description` varchar(200) DEFAULT NULL,
-  `Phone Number` varchar(10) DEFAULT NULL
+  `Phone_number` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`User No`, `Username`, `User type`, `Password`, `Full Name`, `Email address`, `Description`, `Phone Number`) VALUES
-(1, 'Mathenge', 'Patients', 'math1234', NULL, '', NULL, NULL);
+INSERT INTO `users` (`User_no`, `Username`, `User_type`, `Password`, `Full_name`, `Email_address`, `Description`, `Phone_number`) VALUES
+(1, 'Mathenge', 'patients', 'math1234', NULL, '', NULL, NULL),
+(2, 'John', 'doctors', 'john1234', NULL, '', NULL, NULL),
+(5, 'Waweru', 'patients', 'math1234', NULL, 'matheshman@gmail.com', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -151,50 +160,50 @@ INSERT INTO `users` (`User No`, `Username`, `User type`, `Password`, `Full Name`
 -- Indexes for table `admins`
 --
 ALTER TABLE `admins`
-  ADD PRIMARY KEY (`Admin No`),
-  ADD KEY `User No` (`User No`);
+  ADD PRIMARY KEY (`Admin_no`),
+  ADD KEY `User No` (`User_no`);
 
 --
 -- Indexes for table `doctors`
 --
 ALTER TABLE `doctors`
-  ADD PRIMARY KEY (`Doctor No`),
-  ADD KEY `User No` (`User No`);
+  ADD PRIMARY KEY (`Doctor_no`),
+  ADD KEY `User No` (`User_no`);
 
 --
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
-  ADD PRIMARY KEY (`Event No`),
-  ADD KEY `Admin No` (`Admin No`);
+  ADD PRIMARY KEY (`Event_no`),
+  ADD KEY `Admin No` (`Admin_no`);
 
 --
 -- Indexes for table `media`
 --
 ALTER TABLE `media`
-  ADD PRIMARY KEY (`Media No`),
-  ADD KEY `Admin No` (`Admin No`);
+  ADD PRIMARY KEY (`Media_no`),
+  ADD KEY `Admin No` (`Admin_no`);
 
 --
 -- Indexes for table `patients`
 --
 ALTER TABLE `patients`
-  ADD PRIMARY KEY (`Patient No`),
-  ADD KEY `User No` (`User No`);
+  ADD PRIMARY KEY (`Patient_no`),
+  ADD KEY `User No` (`User_no`);
 
 --
 -- Indexes for table `professional_help`
 --
 ALTER TABLE `professional_help`
-  ADD PRIMARY KEY (`Application No`),
-  ADD KEY `Doctor No` (`Doctor No`),
-  ADD KEY `Patient No` (`Patient No`);
+  ADD PRIMARY KEY (`Application_no`),
+  ADD KEY `Doctor No` (`Doctor_no`),
+  ADD KEY `Patient No` (`Patient_no`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`User No`);
+  ADD PRIMARY KEY (`User_no`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -204,43 +213,43 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `Admin No` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `Admin_no` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `Doctor No` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `Doctor_no` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `Event No` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `Event_no` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `Media No` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `Media_no` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `Patient No` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `Patient_no` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `professional_help`
 --
 ALTER TABLE `professional_help`
-  MODIFY `Application No` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `Application_no` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `User No` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `User_no` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -250,38 +259,38 @@ ALTER TABLE `users`
 -- Constraints for table `admins`
 --
 ALTER TABLE `admins`
-  ADD CONSTRAINT `admins_ibfk_1` FOREIGN KEY (`User No`) REFERENCES `users` (`User No`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `admins_ibfk_1` FOREIGN KEY (`User_no`) REFERENCES `users` (`User_no`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `doctors`
 --
 ALTER TABLE `doctors`
-  ADD CONSTRAINT `doctors_ibfk_1` FOREIGN KEY (`User No`) REFERENCES `users` (`User No`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `doctors_ibfk_1` FOREIGN KEY (`User_no`) REFERENCES `users` (`User_no`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `events`
 --
 ALTER TABLE `events`
-  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`Admin No`) REFERENCES `admins` (`Admin No`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`Admin_no`) REFERENCES `admins` (`Admin_no`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `media`
 --
 ALTER TABLE `media`
-  ADD CONSTRAINT `media_ibfk_1` FOREIGN KEY (`Admin No`) REFERENCES `admins` (`Admin No`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `media_ibfk_1` FOREIGN KEY (`Admin_no`) REFERENCES `admins` (`Admin_no`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `patients`
 --
 ALTER TABLE `patients`
-  ADD CONSTRAINT `patients_ibfk_1` FOREIGN KEY (`User No`) REFERENCES `users` (`User No`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `patients_ibfk_1` FOREIGN KEY (`User_no`) REFERENCES `users` (`User_no`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `professional_help`
 --
 ALTER TABLE `professional_help`
-  ADD CONSTRAINT `professional_help_ibfk_1` FOREIGN KEY (`Doctor No`) REFERENCES `doctors` (`Doctor No`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `professional_help_ibfk_2` FOREIGN KEY (`Patient No`) REFERENCES `patients` (`Patient No`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `professional_help_ibfk_1` FOREIGN KEY (`Doctor_no`) REFERENCES `doctors` (`Doctor_no`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `professional_help_ibfk_2` FOREIGN KEY (`Patient_no`) REFERENCES `patients` (`Patient_no`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
