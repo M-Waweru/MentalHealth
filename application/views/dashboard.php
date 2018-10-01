@@ -21,7 +21,7 @@
       </div>
       <ul class="nav navbar-nav">
         <li class="active"><a href="dashboard.php">Home</a></li>
-        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="<?php echo site_url('signup_control/') ?>">Sign Up</a></li>
         <li><a href="#">About</a></li>
         <li><a href="<?php echo site_url('/login/displayPage') ?>">Login</a></li>
 

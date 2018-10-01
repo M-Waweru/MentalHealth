@@ -16,7 +16,7 @@
                 <div class="card-action teal lighten-1 white-text">
                     <h3>Login</h3>
                 </div>
-                <form action="<?php echo base_url('login/login_validate') ?>" method="post">
+                <form action="<?php echo base_url('/index.php/login/login_validate') ?>" method="post">
                  <div class="card-content" id="loginform">
                     <div class="form-field">
                         <label for="usertype">User Type</label>
@@ -47,7 +47,7 @@
     </div>
 </div>
 </div>
-<script src="/MentalHealth/js/jquery-3.1.1.min.js"></script>
+<script src="<?php echo base_url('js/jquery-3.1.1.min.js') ?> "></script>
 <script type="text/javascript">
   $(document).ready(function(){
     $('select').formSelect();
