@@ -50,12 +50,13 @@ DROP TABLE IF EXISTS `chat`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `chat` (
   `id` int(9) NOT NULL AUTO_INCREMENT,
-  `usrname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `color` varchar(6) COLLATE utf8_unicode_ci NOT NULL,
-  `chattext` text COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `to` varchar(255) NOT NULL,
+  `color` varchar(6) NOT NULL,
+  `chattext` text NOT NULL,
   `chattime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -275,4 +276,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-06 10:24:35
+-- Dump completed on 2018-10-06 21:32:31
