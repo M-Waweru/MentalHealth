@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel = "stylesheet" type = "text/css" 
-  href = "/MentalHealth/css/dash.css"> 
+  href = "../MentalHealth/css/dash.css"> 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -17,21 +17,14 @@
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="<?php echo base_url() ?>">Hey Friend</a>
+        <a class="navbar-brand" href="#">Hey Friend</a>
       </div>
       <ul class="nav navbar-nav">
-        <?php 
-        if ($this->session->userdata('username')!=''){
-          echo "<li><a href=''>".$this->session->userdata('username')."</a></li>";
-          echo "<li><a href=".site_url('appointment_control/').">Get Professional Help</a></li>";
-          echo "<li><a href=".site_url('/login/logout').">Logout</a></li>";
-        } else {
-          echo "<li><a href=" . site_url('signup_control/') . ">Sign Up</a></li>";
-          echo "<li><a href=''>About</a></li>";
-          echo "<li><a href=" . site_url('/login/displayPage') . ">Login</a></li>";
+        <li class="active"><a href="dashboard.php">Home</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="login.html">Login</a></li>
 
-        }
-        ?>
       </ul>
     </div>
   </nav>

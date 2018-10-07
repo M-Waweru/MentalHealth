@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/MentalHealth/';
+$config['base_url'] = 'http:/localhost/MentalHealth/';
 
 /*
 |--------------------------------------------------------------------------
@@ -324,7 +324,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = 'c3nVUybxzk25a0RJ9Dx4QDhrmK6TEHl5';
+$config['encryption_key'] = '';
 
 /*
 |--------------------------------------------------------------------------
