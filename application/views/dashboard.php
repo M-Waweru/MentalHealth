@@ -17,14 +17,21 @@
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Hey Friend</a>
+        <a class="navbar-brand" href="<?php echo base_url() ?>">Hey Friend</a>
       </div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="dashboard.php">Home</a></li>
-        <li><a href="<?php echo site_url('signup_control/') ?>">Sign Up</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="<?php echo site_url('/login/displayPage') ?>">Login</a></li>
+        <?php 
+        if ($this->session->userdata('username')!=''){
+          echo "<li><a href=''>".$this->session->userdata('username')."</a></li>";
+          echo "<li><a href=".site_url('appointment_control/').">Get Professional Help</a></li>";
+          echo "<li><a href=".site_url('/login/logout').">Logout</a></li>";
+        } else {
+          echo "<li><a href=" . site_url('signup_control/') . ">Sign Up</a></li>";
+          echo "<li><a href=''>About</a></li>";
+          echo "<li><a href=" . site_url('/login/displayPage') . ">Login</a></li>";
 
+        }
+        ?>
       </ul>
     </div>
   </nav>
