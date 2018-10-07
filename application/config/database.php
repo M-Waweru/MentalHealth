@@ -78,8 +78,8 @@ require 'custom_connection.php';
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => $username,
-	'password' => $password,
+	'username' => 'root',
+	'password' => '',
 	'database' => 'mentalhealth',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

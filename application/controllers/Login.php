@@ -41,9 +41,7 @@ class Login extends CI_Controller {
 
 	function enter(){
 		if ($this->session->userdata('username') != ''){
-			echo '<h2>Welcome '.$this->session->userdata('username').'</h2>'; 
-			echo '<a href="'.base_url('index.php/login/logout').'">Logout</a>';
-
+			redirect(base_url());
 		} else {
 			redirect(base_url('index.php/login/displayPage'));
 		}

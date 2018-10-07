@@ -28,8 +28,11 @@ class User_model extends CI_Model {
 				'Password' => $password 
 			);
 
+			$this->db->insert('users', $data);
+
 			$query = $this->db->get_where('users', array('Username'=> $username));
 			$userarray = $query -> result_array();
+			print_r($userarray);
 
 			$userno = $userarray[0]['User_no'];
 
