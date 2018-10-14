@@ -15,7 +15,7 @@
     <li class="divider"></li>
     <li><a href="#!">three</a></li>
   </ul>
-  <nav>
+  <nav class="blue">
     <div class="nav-wrapper">
       <a href="<?php echo base_url() ?>" class="brand-logo">Hey Friend</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>

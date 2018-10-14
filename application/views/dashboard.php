@@ -49,7 +49,7 @@
    <a href="#" class="fa fa-linkedin"></a>
    <a href="#" class="fa fa-youtube"></a>
    <a href="#" class="fa fa-instagram"></a>
-
+   <a href="<?php echo site_url("login/adminPage") ?>" class="text-right">Admin Login</a>
  </div>
 
 </body>

@@ -4,13 +4,34 @@ class User_model extends CI_Model {
 	public function login_auth($username, $usertype, $password){
 		$this->load->database();
 
-		$query = $this->db->get_where('users', array('Username'=>$username, 'User_type'=>$usertype, 'Password'=>$password));
+		$query = $this->db->get_where('users', array('Username'=>$username, 'User_type'=>$usertype));
 
 		if ($query->num_rows() > 0){
-			return true;
+			if (password_verify($password, $userarray[0]['Password'])){
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
+	}
+
+	public function admin_auth($adminname, $password){
+		$this->load->database();
+
+		$query = $this->db->get_where('users', array('Username'=>$adminname, 'User_type'=>"admins"));
+		$userarray = $query -> result_array();
+
+		if ($query->num_rows() > 0){
+			if (password_verify($password, $userarray[0]['Password'])){
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}	
 	}
 
 	public function signup_auth($username, $usertype, $email, $password){
@@ -25,7 +46,7 @@ class User_model extends CI_Model {
 				'Username' => $username,
 				'User_type' => $usertype,
 				'Email_address' => $email,
-				'Password' => $password 
+				'Password' => password_hash($password, PASSWORD_DEFAULT) 
 			);
 
 			$this->db->insert('users', $data);
