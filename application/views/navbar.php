@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Admin Module</title>
+	<title></title>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Import materialize.css-->
 	<link type="text/css" rel="stylesheet" href="/MentalHealth/css/materialize.min.css"  media="screen,projection"/>
@@ -40,7 +40,6 @@
 		<li><a href="collapsible.html">Javascript</a></li>
 		<li><a href="mobile.html">Mobile</a></li>
 	</ul>
-	<h3 class="12px">Admin Portal</h3>
 </body>
 <script src="<?php echo base_url('js/jquery-3.1.1.min.js') ?> "></script>
 <script type="text/javascript" src="<?php echo base_url('/js/materialize.min.js') ?>"></script>

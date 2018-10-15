@@ -91,7 +91,7 @@ class Login extends CI_Controller {
 
 	function logout(){
 		$this->session->unset_userdata('username');
-		redirect(base_url('index.php/login/displayPage'));
+		redirect(base_url());
 	}
 }
 ?>
