@@ -6,6 +6,7 @@ class Login extends CI_Controller {
 	public function displayPage(){
 		$this->load->helper(array('form'));
 		$this->load->library('form_validation');
+		$this->load->view('navbar');
 		$this->load->view('login');
 	}
 
@@ -75,6 +76,7 @@ class Login extends CI_Controller {
 
 	function adminenter(){
 		if ($this->session->userdata('username') != ''){
+			$this->load->view('navbar');
 			$this->load->view('adminpage');
 		} else {
 			redirect(base_url('index.php/login/adminPage'));
