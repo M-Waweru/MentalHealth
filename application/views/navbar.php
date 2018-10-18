@@ -42,5 +42,12 @@
 	</ul>
 </body>
 <script src="<?php echo base_url('js/jquery-3.1.1.min.js') ?> "></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('select').formSelect();
+		$('.sidenav').sidenav();
+		$(".dropdown-trigger").dropdown();  
+	});
+</script>
 <script type="text/javascript" src="<?php echo base_url('/js/materialize.min.js') ?>"></script>
 </html>

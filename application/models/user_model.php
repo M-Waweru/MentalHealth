@@ -5,7 +5,8 @@ class User_model extends CI_Model {
 		$this->load->database();
 
 		$query = $this->db->get_where('users', array('Username'=>$username, 'User_type'=>$usertype));
-
+		$userarray = $query -> result_array();
+		
 		if ($query->num_rows() > 0){
 			if (password_verify($password, $userarray[0]['Password'])){
 				return true;
