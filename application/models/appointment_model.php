@@ -21,6 +21,32 @@ class Appointment_model extends CI_Model{
 			return false;
 		}
 	}
+
+	public function displayApplication(){
+		$this->load->database();
+
+		$this->db->select('*');
+		$this->db->from('professional_help');
+		$this->db->join('patients', 'patients.Patient_no = professional_help.Patient_no');
+		$query = $this->db->get();
+
+		$resulttable = $query->result_array();
+		$rowcount = sizeof($resulttable);
+		for ($i=0; $i < $rowcount; ++$i) { 
+			$userno = $resulttable[$i]['User_no'];
+
+			$userqry = $this->db->get_where('users', array('User_no' => $userno));
+			$userrs = $userqry->result_array();
+
+			$patientname = $userrs[0]['Username'];
+			$patientfullname= $userrs[0]['Full_name'];
+
+			$row = array('Patient Name' => $patientname, 'Full Name' => $patientfullname, 
+				'Condition' => $resulttable[$i]['Condition_description'], 'Residence' => $resulttable[$i]['Residence']);
+			$finaltable[] = $row;
+		}
+		return $finaltable;
+	}
 }
 
 ?>

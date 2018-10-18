@@ -32,5 +32,8 @@ class Appointment_control extends CI_Controller{
 			}
 		}
 	}
+
+	public function displayApplication(){
+	}
 }
 ?>
