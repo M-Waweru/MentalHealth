@@ -1,15 +1,9 @@
 <?php
-/**
- * 
- */
-class Eventregistration extends CI_model
+class Hello_Model extends CI_Model 
 {
-	
-	public function registerforevent($users){
-		$this->db->insert('user', $users)
+	function saverecords($name,$email,$mobile)
+	{
+	$query="insert into users values('','$name','$email','$mobile')";
+	$this->db->query($query);
 	}
-
-
-	
-	
 }
