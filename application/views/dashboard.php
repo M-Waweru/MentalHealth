@@ -22,7 +22,11 @@
         <?php 
         if ($this->session->userdata('username')!=''){
           echo "<li><a href=''>".$this->session->userdata('username')."</a></li>";
-          echo "<li><a href=".site_url('appointment_control/').">Get Professional Help</a></li>";
+          if ($this->session->userdata('usertype')=="patients"){
+            echo "<li><a href=".site_url('appointment_control/').">Get Professional Help</a></li>";
+          } else {
+            echo "<li><a href=".site_url('appointment_control/').">Check on Patients</a></li>";
+          }
           echo "<li><a href=".site_url('/login/logout').">Logout</a></li>";
         } else {
           echo "<li><a href=" . site_url('signup_control/') . ">Sign Up</a></li>";
