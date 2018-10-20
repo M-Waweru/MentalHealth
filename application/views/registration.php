@@ -94,26 +94,25 @@ border-radius:5px;
 
 <div class="wrap">
 
-    <form name="myform" action="register.php" method="post" onsubmit="return validate(this);" class="registration">
+    <form name="my form" method="post">
        
  <h2> EVENT REGISTRATION FORM </h2>  
- <input type="text" name ="yourIDno" placeholder="Your ID Number">
- <input type="text" name ="yourname" placeholder="Your Name">
- <input type="email" name ="email" placeholder="Your Email">
- <input type="number" name ="number" placeholder="Mobile Number">
+ <input type="text" name ="yourIDno" placeholder="Your ID Number" autocomplete="off" required>
+ <input type="text" name ="yourname" placeholder="Your Name" autocomplete="off" required>
+ <input type="email" name ="email" placeholder="Your Email" autocomplete="off" required>
+ <input type="number" name ="number" placeholder="Mobile Number" autocomplete="off" required>
  <br>
  <br>
  
- <input type ="radio" name="male" value="male">Male <br><br>
- <input type ="radio" name="female" value="female">female
-   <br><br>
    <input type="checkbox"> I Agree to The Terms And Conditions
    <br><br>
+
+   <input type="submit" name="register" class="button"/>
+  
    
    </form>
 
-   <input type="submit" name="" class="button"/>
-  
+   
 </div>
 
 </body>
