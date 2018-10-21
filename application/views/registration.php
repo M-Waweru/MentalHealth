@@ -97,7 +97,6 @@ border-radius:5px;
     <form name="my form" method="post">
        
  <h2> EVENT REGISTRATION FORM </h2>  
- <input type="text" name ="yourIDno" placeholder="Your ID Number" autocomplete="off" required>
  <input type="text" name ="yourname" placeholder="Your Name" autocomplete="off" required>
  <input type="email" name ="email" placeholder="Your Email" autocomplete="off" required>
  <input type="number" name ="number" placeholder="Mobile Number" autocomplete="off" required>
