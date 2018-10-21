@@ -62,18 +62,5 @@ class User_model extends CI_Model {
 			return true;
 		}
 	}
-
-	public function test(){
-		$query = $this->db->get_where('users', array('Username'=>"Mathenge"));
-		$userarray = $query -> result_array();
-		print_r($userarray);
-		$userno = $userarray[0]['User_no'];
-		print_r($userno);
-		$usertype = "patients";
-
-		if ($usertype == "patients"){
-			$this->db->insert('patients', array('User_no'=>$userno));
-		} 
-	}
 }
 ?>

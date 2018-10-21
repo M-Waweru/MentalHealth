@@ -27,7 +27,7 @@ if ($this->session->userdata('usertype')!='doctors'){
 			<p>Residence: ".$data[$key]['Residence']."</p>
 			</div>
 			<div class='card-action'>
-			<a href='".base_url('index.php/appointment/acceptbyDoctor('.$data[$key]['Patient No'].','.$this->session->userdata['username'].','.$data[$key]['Application No'].' ))')."'>Accept</a>
+			<a href='".base_url('index.php/appointment/acceptbyDoctor?patientno='.$data[$key]['Patient No'].'&username='.$this->session->userdata['username'].'&applno='.$data[$key]['Application No'])."'>Accept</a>
 			<a href='#'>Cancel</a>
 			</div>
 			</div>

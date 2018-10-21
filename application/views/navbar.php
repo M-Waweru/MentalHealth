@@ -10,10 +10,7 @@
 </head>
 <body>
 	<ul id="accountcontent" class="dropdown-content">
-		<li><a href="#!">Account Settings</a></li>
-		<li><a href="<?php if ($this->session->userdata('usertype')=="doctors"){
-			echo site_url('/account/notifications');
-		} ?>">Notifications</a></li>
+		<li><a href='#!'>Account Settings</a></li>			
 	</ul>
 	<nav class="blue">
 		<div class="nav-wrapper">
@@ -41,7 +38,7 @@
 	<ul class="sidenav" id="mobile-demo">
 		<?php
 		if ($this->session->userdata('username')!=''){
-			echo "<li><a class='dropdown-trigger' data-target='accountcontent' href='#'><i class='material-icons right'>arrow_drop_down</i>".$this->session->userdata('username')."</a></li>";
+			echo "<li><a href='#'><i class='material-icons right'>arrow_drop_down</i>".$this->session->userdata('username')."</a></li>";
 			if ($this->session->userdata('usertype')=="patients"){
 				echo "<li><a href=".site_url('appointment/').">Get Professional Help</a></li>";
 			} else {

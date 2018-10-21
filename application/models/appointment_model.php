@@ -47,6 +47,30 @@ class Appointment_model extends CI_Model{
 		}
 		return $finaltable;
 	}
+
+	public function getDoctorno($username){
+		$this->load->database();
+
+		$query = $this->db->get_where('users', array('Username' => $username));
+		$rs = $query->result_array();
+
+		$userno = $rs[0]['User_no'];
+
+		$query = $this->db->get_where('doctors', array('User_no' => $userno));
+		$rs = $query->result_array();
+		$doctorno = $rs[0]['Doctor_no'];
+		return $doctorno;
+	}
+
+	public function acceptApp($patientno, $doctorno, $appno){
+		$this->load->database();
+
+		if ($this->db->insert('applications', array('Application_no' => $appno, 'Patient_no' => $patientno, 'Doctor_no' => $doctorno))){
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 
 ?>

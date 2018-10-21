@@ -15,7 +15,7 @@
                 <div class="card-action teal lighten-1 white-text">
                     <h3>Sign Up</h3>
                 </div>
-                <form method="POST" action="<?php echo base_url('index.php/signup_control/signup_validate') ?>">
+                <form method="POST" action="<?php echo base_url('index.php/signup/signup_validate') ?>">
                     <div class="card-content" id="loginform">
                         <div class="form-field">
                             <label for="username">Username</label>

@@ -34,8 +34,25 @@ class Appointment extends CI_Controller{
 		}
 	}
 
-	public function acceptbyDoctor($patientno, $username, $applicationno){
-		
+	public function acceptbyDoctor(){
+		$this->load->model('appointment_model');
+
+		$patientno = $this->input->get('patientno');
+		$username = $this->input->get('username');
+		$applicationno = $this->input->get('applno');
+
+		$doctorno = $this->appointment_model->getDoctorno($username);
+
+		if ($this->appointment_model->acceptApp($patientno, $doctorno, $applicationno)==true){
+			$this->successfulaccept();
+		} else {
+			echo "Error";
+		}
+	}
+
+	function successfulaccept(){
+		$this->load->view('navbar');
+		$this->load->view('successfulapp');
 	}
 }
 ?>

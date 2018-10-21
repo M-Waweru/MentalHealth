@@ -6,6 +6,7 @@ class Signup extends CI_Controller
 	public function index(){
 		$this->load->helper(array('form'));
 		$this->load->library('form_validation');
+		$this->load->view('navbar');
 		$this->load->view('signup');
 	}
 
@@ -34,7 +35,7 @@ class Signup extends CI_Controller
 				redirect(base_url() . 'index.php/login/displayPage');
 			} else {
 				$this->session->set_flashdata('error', "Username has already been taken");
-				redirect(base_url('index.php/signup_control/displayPage'));
+				redirect(base_url('index.php/signup/index'));
 			}
 		}
 	}
