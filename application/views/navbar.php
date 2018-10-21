@@ -12,22 +12,25 @@
 	<ul id="accountcontent" class="dropdown-content">
 		<li><a href="#!">Account Settings</a></li>
 		<li><a href="<?php if ($this->session->userdata('usertype')=="doctors"){
-			echo site_url('/operations_control/notifications');
+			echo site_url('/account/notifications');
 		} ?>">Notifications</a></li>
-		<li class="divider"></li>
-		<li><a href="#!">three</a></li>
 	</ul>
-	<nav class="transparent">
+	<nav class="blue">
 		<div class="nav-wrapper">
 			<a href="<?php echo base_url() ?>" class="brand-logo">Hey Friend</a>
 			<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<?php
 				if ($this->session->userdata('username')!=''){
-					echo "<li><a class='dropdown-trigger' data-target='accountcontent' href='#'>".$this->session->userdata('username')."</a></li>";
+					echo "<li><a class='dropdown-trigger' data-target='accountcontent' href='#'>".$this->session->userdata('username')."</a><i class='material-icons right'>arrow_drop_down</i></li>";	
+					if ($this->session->userdata('usertype')=="patients"){
+						echo "<li><a href=".site_url('appointment/').">Get Professional Help</a></li>";
+					} else {
+						echo "<li><a href=".site_url('account/notifications').">Check on Patients</a></li>";
+					}
 					echo "<li><a href=".site_url('/login/logout').">Logout</a></li>";
 				} else {
-					echo "<li><a href=" . site_url('signup_control/') . ">Sign Up</a></li>";
+					echo "<li><a href=" . site_url('signup/') . ">Sign Up</a></li>";
 					echo "<li><a href=''>About</a></li>";
 					echo "<li><a href=" . site_url('/login/displayPage') . ">Login</a></li>";
 				}
@@ -38,10 +41,15 @@
 	<ul class="sidenav" id="mobile-demo">
 		<?php
 		if ($this->session->userdata('username')!=''){
-			echo "<li><a class='dropdown-trigger' data-target='accountcontent' href='#'>".$this->session->userdata('username')."</a></li>";
+			echo "<li><a class='dropdown-trigger' data-target='accountcontent' href='#'><i class='material-icons right'>arrow_drop_down</i>".$this->session->userdata('username')."</a></li>";
+			if ($this->session->userdata('usertype')=="patients"){
+				echo "<li><a href=".site_url('appointment/').">Get Professional Help</a></li>";
+			} else {
+				echo "<li><a href=".site_url('account/notifications').">Check on Patients</a></li>";
+			}
 			echo "<li><a href=".site_url('/login/logout').">Logout</a></li>";
 		} else {
-			echo "<li><a href=" . site_url('signup_control/') . ">Sign Up</a></li>";
+			echo "<li><a href=" . site_url('signup/') . ">Sign Up</a></li>";
 			echo "<li><a href=''>About</a></li>";
 			echo "<li><a href=" . site_url('/login/displayPage') . ">Login</a></li>";
 		}

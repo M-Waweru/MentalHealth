@@ -34,6 +34,8 @@ class Appointment_model extends CI_Model{
 		$rowcount = sizeof($resulttable);
 		for ($i=0; $i < $rowcount; ++$i) { 
 			$userno = $resulttable[$i]['User_no'];
+			$patientno = $resulttable[$i]['Patient_no'];
+			$applicationno = $resulttable[$i]['Application_no'];
 
 			$userqry = $this->db->get_where('users', array('User_no' => $userno));
 			$userrs = $userqry->result_array();
@@ -41,9 +43,7 @@ class Appointment_model extends CI_Model{
 			$patientname = $userrs[0]['Username'];
 			$patientfullname= $userrs[0]['Full_name'];
 
-			$row = array('Patient Name' => $patientname, 'Full Name' => $patientfullname, 
-				'Condition' => $resulttable[$i]['Condition_description'], 'Residence' => $resulttable[$i]['Residence']);
-			$finaltable[] = $row;
+			$finaltable[$i] = array('Application No' => $applicationno, 'Patient No' => $patientno, 'Patient Name' => $patientname, 'Full Name' => $patientfullname, 'Condition' => $resulttable[$i]['Condition_description'], 'Residence' => $resulttable[$i]['Residence']);
 		}
 		return $finaltable;
 	}

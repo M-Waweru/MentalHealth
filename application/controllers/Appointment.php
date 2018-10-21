@@ -1,11 +1,12 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Appointment_control extends CI_Controller{
+class Appointment extends CI_Controller{
 
 	public function index(){
 		$this->load->helper(array('form'));
 		$this->load->library('form_validation');
+		$this->load->view('navbar');
 		$this->load->view('getting_help');
 	}
 
@@ -15,8 +16,7 @@ class Appointment_control extends CI_Controller{
 
 		$this->form_validation->set_rules('condition', 'Condition', 'required');
 		if ($this->form_validation->run() == FALSE) {
-
-			$this->load->view('getting_help'); 
+			index(); 
 		} 
 		else {
 			$condition = $this->input->post('condition');
@@ -25,7 +25,8 @@ class Appointment_control extends CI_Controller{
 			$this->load->model('appointment_model');
 
 			if ($this->appointment_model->applyforhelp($username, $condition)){
-				echo "Your application has been submitted";
+				$this->load->view('navbar');
+				$this->load->view('successmodal');
 			} else {
 				$this->session->set_flashdata('error', "Could not apply");
 				index();
@@ -33,7 +34,8 @@ class Appointment_control extends CI_Controller{
 		}
 	}
 
-	public function displayApplication(){
+	public function acceptbyDoctor($patientno, $username, $applicationno){
+		
 	}
 }
 ?>
