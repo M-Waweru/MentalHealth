@@ -8,7 +8,10 @@ class Account extends CI_Controller {
 			$this->load->view('navbar');
 			$this->load->view('doctorpage', $data);
 		} else {
-			
+			$this->load->model('appointment_model');
+			$data['data'] = $this->appointment_model->displayDoctors();
+			$this->load->view('navbar');
+			$this->load->view('patientpage', $data);
 		}
 	}
 }

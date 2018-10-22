@@ -22,6 +22,7 @@
 					echo "<li><a class='dropdown-trigger' data-target='accountcontent' href='#'>".$this->session->userdata('username')."</a><i class='material-icons right'>arrow_drop_down</i></li>";	
 					if ($this->session->userdata('usertype')=="patients"){
 						echo "<li><a href=".site_url('appointment/').">Get Professional Help</a></li>";
+						echo "<li><a href=".site_url('account/notifications').">Progress</a></li>";
 					} else {
 						echo "<li><a href=".site_url('account/notifications').">Check on Patients</a></li>";
 					}
@@ -41,6 +42,7 @@
 			echo "<li><a href='#'><i class='material-icons right'>arrow_drop_down</i>".$this->session->userdata('username')."</a></li>";
 			if ($this->session->userdata('usertype')=="patients"){
 				echo "<li><a href=".site_url('appointment/').">Get Professional Help</a></li>";
+				echo "<li><a href=".site_url('account/notifications').">Progress</a></li>";
 			} else {
 				echo "<li><a href=".site_url('account/notifications').">Check on Patients</a></li>";
 			}

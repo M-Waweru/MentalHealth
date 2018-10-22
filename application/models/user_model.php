@@ -62,5 +62,20 @@ class User_model extends CI_Model {
 			return true;
 		}
 	}
+
+	public function getTypeNo($username, $usertype){
+		$this->load->database();
+
+		$query = $this->db->get_where('users', array('Username' => $username));
+		$rs = $query -> result_array();
+
+		$userno = $rs[0]['User_no'];
+
+		$query = $this->db->get_where($usertype, array('User_no' => $userno));
+		$rs = $query -> result_array();
+
+		$patientno = $rs[0]['Patient_no'];
+		return $patientno;
+	}
 }
 ?>

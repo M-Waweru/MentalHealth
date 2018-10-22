@@ -54,5 +54,21 @@ class Appointment extends CI_Controller{
 		$this->load->view('navbar');
 		$this->load->view('successfulapp');
 	}
+
+	public function confirmbyPatient(){
+		$this->load->model('appointment_model');
+
+		$applno = $this->input->get('applno');
+		$doctorno = $this->input->get('doctorno');
+		$patientno = $this->input->get('patientno');
+
+		$this->appointment_model->confirmbyPatient($applno, $doctorno, $patientno);
+		$this->successconfirm();
+	}
+
+	function successconfirm(){
+		$this->load->view('navbar');
+		$this->load->view('successconfirm');
+	}
 }
 ?>

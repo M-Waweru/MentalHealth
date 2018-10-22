@@ -71,6 +71,60 @@ class Appointment_model extends CI_Model{
 			return false;
 		}
 	}
+
+	public function displayDoctors(){
+		$this->load->database();
+
+		$query = $this->db->get('applications');
+		$rs = $query->result_array();
+
+		for($i=0; $i<sizeof($rs); ++$i) {
+			$applicationno = $rs[$i]['Application_no'];
+			$doctorno = $rs[$i]['Doctor_no'];
+			$patientno = $rs[$i]['Patient_no'];
+			$data['patientno'] = $patientno;
+			$data['applicationno'] = $applicationno;
+			$data['doctorno'] = $doctorno;
+
+			$query1 = $this->db->get_where('doctors', array('Doctor_no' => $doctorno));
+			$rs1 = $query1->result_array();
+			$userno = $rs1[0]['User_no'];
+			$data['userno'] = $userno;
+			$data['email'] = $rs1[0]['Specialization'];
+			$data['clinicname'] = $rs1[0]['Clinic_name'];
+			$data['cliniclocation'] = $rs1[0]['Clinic_location'];
+
+			$query2 = $this->db->get_where('users', array('User_no' => $userno));
+			$rs2 = $query2->result_array();
+			$data['username'] = $rs2[0]['Username'];
+			$data['fullname'] = $rs2[0]['Full_name'];
+			$data['email'] = $rs2[0]['Email_address'];
+			$data['desc'] = $rs2[0]['Description'];
+			$data['phone'] = $rs2[0]['Phone_number'];
+
+			$finaltable[$i] = $data;
+		}
+		if ($finaltable!=null){
+			return $finaltable;
+		}
+	}
+
+	public function confirmbyPatient($applno, $doctorno, $patientno){
+		$this->load->database();
+
+		$query = $this->db->delete('applications', array('Application_no' => $applno));
+		date_default_timezone_set('Africa/Nairobi');
+		$date = date("Y/m/d");
+
+		$data = array(
+			'Doctor_no' => $doctorno,
+			'Date_of_approval' => $date,
+			'Patient_progress' => "Beginning"
+		);
+
+		$this->db->where('Application_no', $applno);
+		$this->db->update('professional_help', $data);
+	}
 }
 
 ?>
