@@ -23,6 +23,7 @@
 					if ($this->session->userdata('usertype')=="patients"){
 						echo "<li><a href=".site_url('appointment/').">Get Professional Help</a></li>";
 						echo "<li><a href=".site_url('account/notifications').">Progress</a></li>";
+						echo "<li><a href='".base_url('index.php/events/index')."'>Events</a></li>";
 					} else {
 						echo "<li><a href=".site_url('account/notifications').">Check on Patients</a></li>";
 					}
@@ -43,6 +44,7 @@
 			if ($this->session->userdata('usertype')=="patients"){
 				echo "<li><a href=".site_url('appointment/').">Get Professional Help</a></li>";
 				echo "<li><a href=".site_url('account/notifications').">Progress</a></li>";
+				echo "<li><a href='".base_url('index.php/events/index')."'>Events</a></li>";
 			} else {
 				echo "<li><a href=".site_url('account/notifications').">Check on Patients</a></li>";
 			}

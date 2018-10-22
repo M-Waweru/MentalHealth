@@ -62,7 +62,9 @@ class Appointment extends CI_Controller{
 		$doctorno = $this->input->get('doctorno');
 		$patientno = $this->input->get('patientno');
 
-		$this->appointment_model->confirmbyPatient($applno, $doctorno, $patientno);
+		if ($this->appointment_model->confirmbyPatient($applno, $doctorno, $patientno)){
+			$this->successconfirm();
+		}
 		$this->successconfirm();
 	}
 
