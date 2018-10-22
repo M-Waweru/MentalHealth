@@ -27,9 +27,11 @@ class Login extends CI_Controller {
 			//model function
 			$this->load->model('user_model');
 			if ($this->user_model->login_auth($username, $usertype, $password)){
+				$typeno = $this->user_model->getTypeNo($username, $usertype);
 				$session_data = array(
 					'username' => $username,
-					'usertype' => $usertype
+					'usertype' => $usertype,
+					'typeno' => $typeno
 				);
 				$this->session->set_userdata($session_data);
 				redirect(base_url() . 'index.php/login/enter');
