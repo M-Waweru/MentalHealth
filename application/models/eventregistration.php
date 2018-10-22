@@ -1,9 +1,17 @@
 <?php
 class Eventregistration extends CI_Model 
 {
-	function save ($Username,$Email_address,$Phone_number)
+	function save ($username,$fullname,$phone)
 	{
-	$query="insert into users (Username, Email_address, Phone_number) values('$Username','$Email_address','$Phone_number')";
-	$this->db->query($query);
+		$this->load->database();
+
+		$data = array(
+			'Full_name' => $fullname,
+			'Phone_number' => $phone
+		);
+
+		$this->db->where('Username', $username);
+		$this->db->update('users', $data);
+		return true;
 	}
 }
